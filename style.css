@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background: #0b0c10;
+  color: #e7e7e7;
+}
+
+i,
+svg {
+  pointer-events: none;
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  height: 5rem;
+  width: 5rem;
+  margin: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.kick-pad {
+  background: #c45959;
+}
+
+.snare-pad {
+  background: #6691b4;
+}
+
+.hihat-pad {
+  background: #67ac85;
+}
+
+.kick-pad.active {
+  background: #be1818;
+}
+
+.snare-pad.active {
+  background: #1a6db1;
+}
+
+.hihat-pad.active {
+  background: #1da859;
+}
+
+.kick-track,
+.snare-track,
+.hihat-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 5rem;
+}
+
+.kick,
+.snare,
+.hihat {
+  display: flex;
+}
+
+.sequencer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  margin: 0 1.2rem;
+}
+
+.controls button {
+  padding: 1rem;
+  border: none;
+  background: #a8a8a8;
+  color: #0b0c10;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.pad {
+  transition: all 0.5s ease;
+}
