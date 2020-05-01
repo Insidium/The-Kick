@@ -15,6 +15,31 @@ svg {
   pointer-events: none;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  font-family: "Permanent Marker", cursive;
+}
+
+.heading-kicker {
+  color: #bd2121;
+}
+
+.sub-heading {
+  font-family: "Permanent Marker", cursive;
+  border-bottom: #bd2121 solid 2px;
+}
+
 .kick-pad,
 .snare-pad,
 .hihat-pad {
@@ -83,7 +108,7 @@ svg {
 .controls button {
   padding: 1rem;
   border: none;
-  background: #a8a8a8;
+  background: #c5c5c5;
   color: #0b0c10;
   font-size: 1rem;
   cursor: pointer;
@@ -92,4 +117,14 @@ svg {
 
 .pad {
   transition: all 0.5s ease;
+}
+
+.play {
+  padding: 1rem 2rem;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  background: #c5c5c5;
+  color: #0b0c10;
+  border: none;
+  cursor: pointer;
 }
