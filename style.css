@@ -50,27 +50,27 @@ select {
 }
 
 .kick-pad {
-  background: #c45959;
+  background: #ca9d9d;
 }
 
 .snare-pad {
-  background: #6691b4;
+  background: #a3c0d8;
 }
 
 .hihat-pad {
-  background: #67ac85;
+  background: #b1dfc5;
 }
 
 .kick-pad.active {
-  background: #be1818;
+  background: #f80000;
 }
 
 .snare-pad.active {
-  background: #1a6db1;
+  background: #0288f7;
 }
 
 .hihat-pad.active {
-  background: #1da859;
+  background: #03f56c;
 }
 
 .kick-track,
