@@ -31,6 +31,10 @@ select {
   font-family: "Permanent Marker", cursive;
 }
 
+.heading span {
+  padding: 1rem;
+}
+
 .heading-kicker {
   color: #bd2121;
 }
@@ -71,6 +75,12 @@ select {
 
 .hihat-pad.active {
   background: #03f56c;
+}
+
+.play.active {
+  background: #bd2121;
+  color: #e7e7e7;
+  border: #e7e7e7 solid 0.1rem;
 }
 
 .kick-track,
@@ -123,10 +133,14 @@ select {
   padding: 1rem 2rem;
   margin: 3rem;
   font-size: 1.5rem;
-  background: #c5c5c5;
+  background: #e7e7e7;
   color: #0b0c10;
   border: none;
   cursor: pointer;
+}
+
+.fa-drum {
+  padding: 0 1rem;
 }
 
 @keyframes playTrack {

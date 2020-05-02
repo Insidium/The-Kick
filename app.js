@@ -5,6 +5,10 @@ class DrumKit {
     this.pads = document.querySelectorAll(".pad");
     //select play button
     this.playBtn = document.querySelector(".play");
+    //set default sound to following
+    this.currentKick = "./allSounds/kick-classic.wav";
+    this.currentSnare = "./allSounds/snare-acoustic01.wav";
+    this.currentHihat = "./allSounds/hihat-acoustic01.wav";
     //select the assigned sound for the pad
     this.kickAudio = document.querySelector(".kick-sound");
     this.snareAudio = document.querySelector(".snare-sound");
@@ -12,7 +16,11 @@ class DrumKit {
     //start at the first pad (index 0)
     this.index = 0;
     //set default beats per minute
-    this.bpm = 250;
+    this.bpm = 150;
+    //set default status to not playing
+    this.isPlaying = null;
+    //target all select elements
+    this.selects = document.querySelector("select");
   }
   //method to toggle "active" class styling to an active pad
   activePad() {
@@ -32,12 +40,17 @@ class DrumKit {
       if (bar.classList.contains("active")) {
         //check which sound to play and play it
         if (bar.classList.contains("kick-pad")) {
+          //reset sound timing if multiple pads in a row are active
+          this.kickAudio.currentTime = 0;
+          //play audio track
           this.kickAudio.play();
         }
         if (bar.classList.contains("snare-pad")) {
+          this.snareAudio.currentTime = 0;
           this.snareAudio.play();
         }
         if (bar.classList.contains("hihat-pad")) {
+          this.hihatAudio.currentTime = 0;
           this.hihatAudio.play();
         }
       }
@@ -49,15 +62,36 @@ class DrumKit {
   start() {
     //set simple interval calculation by seconds
     const interval = (60 / this.bpm) * 1000;
-    //set interval for the repeat method to run as per interval
-    setInterval(() => {
-      this.repeat();
-    }, interval);
+    //check if track is playing (i.e. not null)
+    if (this.isPlaying) {
+      //if it's already playing, clear the interval
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+    } else {
+      //if not playing, set interval for the repeat method to run as per interval
+      this.isPlaying = setInterval(() => {
+        this.repeat();
+      }, interval);
+    }
+  }
+  //change play button displayand change to active
+  updateBtn() {
+    //if the music is not playing, change play button to "Play" and remove active class
+    if (this.isPlaying) {
+      this.playBtn.innerText = "Play";
+      this.playBtn.classList.remove("active");
+    } else {
+      //if the music is playing, change play button to "Stop" and add active class
+      this.playBtn.innerText = "Stop";
+      this.playBtn.classList.add("active");
+    }
   }
 }
 
 // create a new Drumkit instance
 const drumKit = new DrumKit();
+
+//Event Listeners
 
 //loop over each pad
 drumKit.pads.forEach((pad) => {
@@ -71,6 +105,8 @@ drumKit.pads.forEach((pad) => {
 
 //add event listener for click on play button
 drumKit.playBtn.addEventListener("click", function () {
+  //run the updateBtn method to show play/stop option
+  drumKit.updateBtn();
   //run the start method (including the repeat) on the drumkit
   drumKit.start();
 });
