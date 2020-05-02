@@ -42,6 +42,7 @@ select {
 .sub-heading {
   font-family: "Permanent Marker", cursive;
   border-bottom: #bd2121 solid 2px;
+  margin-bottom: 2rem;
 }
 
 .kick-pad,
@@ -84,7 +85,7 @@ select {
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  margin-top: 5rem;
+  margin: 2rem;
 }
 
 .kick,
@@ -125,7 +126,7 @@ select {
 
 .play {
   padding: 1rem 2rem;
-  margin: 3rem;
+  margin: 2rem;
   font-size: 1.5rem;
   background: #e7e7e7;
   color: #0b0c10;
@@ -147,6 +148,31 @@ select {
 
 .fa-drum {
   padding: 0 1rem;
+}
+
+.tempo {
+  margin: 2rem;
+  width: 30%;
+}
+
+.tempo-slider {
+  padding: 0.2rem;
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  background-color: #bd2121;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.tempo p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.tempo-number {
+  color: #bd2121;
 }
 
 @keyframes playTrack {

@@ -21,7 +21,10 @@ class DrumKit {
     this.isPlaying = null;
     //target all select elements
     this.selects = document.querySelectorAll("select");
+    //target all mute buttons
     this.muteBtn = document.querySelectorAll(".mute");
+    //target the tempo slider
+    this.tempoSlider = document.querySelector(".tempo-slider");
   }
   //method to toggle "active" class styling to an active pad
   activePad() {
@@ -141,6 +144,27 @@ class DrumKit {
       }
     }
   }
+
+  //change tempo on tempo slider
+  changeTempo(e) {
+    //target tempo text and bpm and change to the value return by input (slide position)
+    const tempoText = document.querySelector(".tempo-number");
+    tempoText.innerText = e.target.value;
+  }
+
+  //actively update tempo speed after slider moves to position
+  updateTempo(e) {
+    //set bpm to value of selection in event
+    this.bpm = e.target.value;
+    //reset interval of playback so bpm can be updated
+    clearInterval(this.isPlaying);
+    this.isPlaying = null;
+    //restart playback once play button is active
+    const playBtn = document.querySelector(".play");
+    if (playBtn.classList.contains("active")) {
+      this.start();
+    }
+  }
 }
 
 // create a new Drumkit instance
@@ -166,7 +190,7 @@ drumKit.playBtn.addEventListener("click", function () {
   drumKit.start();
 });
 
-//add event listener to each select element
+//add event listener to each select element (change registers on selection)
 drumKit.selects.forEach((select) => {
   //when option in select is changed, change sound to assigned track
   select.addEventListener("change", function (e) {
@@ -180,4 +204,14 @@ drumKit.muteBtn.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     drumKit.mute(e);
   });
+});
+
+//add event listener for tempo slider value changes (input registers changes as slider is dragged)
+drumKit.tempoSlider.addEventListener("input", function (e) {
+  drumKit.changeTempo(e);
+});
+
+//add event listener for tempo slider speed changes (change registers actively as slider is dragged)
+drumKit.tempoSlider.addEventListener("change", function (e) {
+  drumKit.updateTempo(e);
 });
