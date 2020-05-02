@@ -47,7 +47,8 @@ select {
 
 .kick-pad,
 .snare-pad,
-.hihat-pad {
+.hihat-pad,
+.cowbell-pad {
   height: 5rem;
   width: 5rem;
   margin: 1rem 0.5rem;
@@ -66,6 +67,10 @@ select {
   background: #b1dfc5;
 }
 
+.cowbell-pad {
+  background: #c7c78d;
+}
+
 .kick-pad.active {
   background: #f80000;
 }
@@ -78,9 +83,14 @@ select {
   background: #03f56c;
 }
 
+.cowbell-pad.active {
+  background: #e0e00e;
+}
+
 .kick-track,
 .snare-track,
-.hihat-track {
+.hihat-track,
+.cowbell-track {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +100,8 @@ select {
 
 .kick,
 .snare,
-.hihat {
+.hihat,
+.cowbell {
   display: flex;
 }
 

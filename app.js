@@ -9,10 +9,12 @@ class DrumKit {
     this.currentKick = "./allSounds/kick-acoustic01.wav";
     this.currentSnare = "./allSounds/snare-acoustic01.wav";
     this.currentHihat = "./allSounds/hihat-acoustic01.wav";
+    this.currentCowbell = "./allSounds/cowbell.wav";
     //select the assigned sound for the pad
     this.kickAudio = document.querySelector(".kick-sound");
     this.snareAudio = document.querySelector(".snare-sound");
     this.hihatAudio = document.querySelector(".hihat-sound");
+    this.cowbellAudio = document.querySelector(".cowbell-sound");
     //start at the first pad (index 0)
     this.index = 0;
     //set default beats per minute
@@ -56,6 +58,10 @@ class DrumKit {
         if (bar.classList.contains("hihat-pad")) {
           this.hihatAudio.currentTime = 0;
           this.hihatAudio.play();
+        }
+        if (bar.classList.contains("cowbell-pad")) {
+          this.cowbellAudio.currentTime = 0;
+          this.cowbellAudio.play();
         }
       }
     });
@@ -107,6 +113,9 @@ class DrumKit {
       case "hihat-select":
         this.hihatAudio.src = selectionValue;
         break;
+      case "cowbell-select":
+        this.cowbellAudio.src = selectionValue;
+        break;
     }
   }
 
@@ -128,6 +137,9 @@ class DrumKit {
         case "2":
           this.hihatAudio.volume = 0;
           break;
+        case "3":
+          this.cowbellAudio.volume = 0;
+          break;
       }
       //if mute button is not active, change volume on that layer to 1/on
     } else {
@@ -140,6 +152,9 @@ class DrumKit {
           break;
         case "2":
           this.hihatAudio.volume = 1;
+          break;
+        case "3":
+          this.cowbellAudio.volume = 1;
           break;
       }
     }
