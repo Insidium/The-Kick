@@ -6,7 +6,7 @@ class DrumKit {
     //select play button
     this.playBtn = document.querySelector(".play");
     //set default sound to following
-    this.currentKick = "./allSounds/kick-classic.wav";
+    this.currentKick = "./allSounds/kick-acoustic01.wav";
     this.currentSnare = "./allSounds/snare-acoustic01.wav";
     this.currentHihat = "./allSounds/hihat-acoustic01.wav";
     //select the assigned sound for the pad
@@ -20,7 +20,7 @@ class DrumKit {
     //set default status to not playing
     this.isPlaying = null;
     //target all select elements
-    this.selects = document.querySelector("select");
+    this.selects = document.querySelectorAll("select");
   }
   //method to toggle "active" class styling to an active pad
   activePad() {
@@ -86,6 +86,25 @@ class DrumKit {
       this.playBtn.classList.add("active");
     }
   }
+  //change sound on user select
+  changeSound(e) {
+    //target name (kick-select etc.) of selection
+    const selectionName = e.target.name;
+    //target value (track location) of selection
+    const selectionValue = e.target.value;
+    //check which selection name is chosen and change audio source accordingly
+    switch (selectionName) {
+      case "kick-select":
+        this.kickAudio.src = selectionValue;
+        break;
+      case "snare-select":
+        this.snareAudio.src = selectionValue;
+        break;
+      case "hihat-select":
+        this.hihatAudio.src = selectionValue;
+        break;
+    }
+  }
 }
 
 // create a new Drumkit instance
@@ -109,4 +128,12 @@ drumKit.playBtn.addEventListener("click", function () {
   drumKit.updateBtn();
   //run the start method (including the repeat) on the drumkit
   drumKit.start();
+});
+
+//add event listener to each select element
+drumKit.selects.forEach((select) => {
+  //when option in select is changed, change sound to assigned track
+  select.addEventListener("change", function (e) {
+    drumKit.changeSound(e);
+  });
 });
