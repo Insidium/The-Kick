@@ -21,6 +21,7 @@ class DrumKit {
     this.isPlaying = null;
     //target all select elements
     this.selects = document.querySelectorAll("select");
+    this.muteBtn = document.querySelectorAll(".mute");
   }
   //method to toggle "active" class styling to an active pad
   activePad() {
@@ -105,6 +106,41 @@ class DrumKit {
         break;
     }
   }
+
+  //mute sound on layer on click
+  mute(e) {
+    //target data-track of layer to activate mute button
+    const muteIndex = e.target.getAttribute("data-track");
+    //toggle active class
+    e.target.classList.toggle("active");
+    //if mute button is active, change volume on that layer to 0/off
+    if (e.target.classList.contains("active")) {
+      switch (muteIndex) {
+        case "0":
+          this.kickAudio.volume = 0;
+          break;
+        case "1":
+          this.snareAudio.volume = 0;
+          break;
+        case "2":
+          this.hihatAudio.volume = 0;
+          break;
+      }
+      //if mute button is not active, change volume on that layer to 1/on
+    } else {
+      switch (muteIndex) {
+        case "0":
+          this.kickAudio.volume = 1;
+          break;
+        case "1":
+          this.snareAudio.volume = 1;
+          break;
+        case "2":
+          this.hihatAudio.volume = 1;
+          break;
+      }
+    }
+  }
 }
 
 // create a new Drumkit instance
@@ -135,5 +171,13 @@ drumKit.selects.forEach((select) => {
   //when option in select is changed, change sound to assigned track
   select.addEventListener("change", function (e) {
     drumKit.changeSound(e);
+  });
+});
+
+//add event listener for mute button selection
+drumKit.muteBtn.forEach((btn) => {
+  //for each click on mute button, apply mute to instrument layer
+  btn.addEventListener("click", function (e) {
+    drumKit.mute(e);
   });
 });

@@ -77,12 +77,6 @@ select {
   background: #03f56c;
 }
 
-.play.active {
-  background: #bd2121;
-  color: #e7e7e7;
-  border: #e7e7e7 solid 0.1rem;
-}
-
 .kick-track,
 .snare-track,
 .hihat-track {
@@ -137,6 +131,18 @@ select {
   color: #0b0c10;
   border: none;
   cursor: pointer;
+}
+
+.play.active {
+  background: #bd2121;
+  color: #e7e7e7;
+  border: #e7e7e7 solid 0.1rem;
+}
+
+.mute.active {
+  background: #bd2121;
+  color: #e7e7e7;
+  border: #e7e7e7 solid 0.1rem;
 }
 
 .fa-drum {
