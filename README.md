@@ -1,6 +1,6 @@
-# The Kick
+# 'The Kick' Drum Beatmaker
 
-JavaScript drum beatmaker app with multiple audio combinations, sound muting and tempo adjustment
+### JavaScript drum beatmaker app with multiple audio combinations, sound muting and tempo adjustment.
 
 ![The Kick Screenshot](./TheKick.png)
 
